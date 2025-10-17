@@ -1,0 +1,54 @@
+<div class="card" style="width: 18rem; margin-bottom: 30px;">
+<div class="card-body">
+<img src="./assets/laptop-with-white-screen-isolated-white-wall.jpg" alt="" width="100%">
+<h5 class="card-title">Laptop</h5>
+<p class="card-text">
+Some quick example text to build on the card title and make up the bulk of the card’s content.
+</p>
+<button routerLink="/home" class="card-link">Back to Home</button>
+<button routerLink="/notfound" class="card-link">Show More</button>
+<button (click)="loadProducts()" class="card-link">Load Products</button>
+</div>
+</div>
+
+<!--Lazy loading  -->
+@defer (when showProducts) {
+<div class="container">
+<h1 class="p">Laptops</h1>
+<div class="card">
+<table aria-label="Products table">
+<thead>
+<tr>
+<th>Image</th>
+<th>Name</th>
+<th>Price</th>
+</tr>
+</thead>
+<tbody>
+@for (product of products; track $index) {
+<tr>
+<td><img [src]="product.img" alt="{{ product.name }}" width="80" /></td>
+<td>{{ product.name }}</td>
+<td>{{ product.price }}</td>
+</tr>
+}
+</tbody>
+</table>
+</div>
+</div>
+} @placeholder {
+<p class="p"> Loading products...</p>
+} @error {
+<p> Error loading products!</p>
+}
+
+<hr>
+
+<!--  OR condition example -->
+@defer (when showProducts || isAdmin) {
+<p class="p">Products section is visible for User or Admin!</p>
+} @placeholder {
+<p class="p"> Waiting for products to load or admin login...</p>
+}
+
+<app-product-card></app-product-card>

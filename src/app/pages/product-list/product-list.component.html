@@ -1,0 +1,12 @@
+<h2 class="h2">Products</h2>
+<div class="cards">
+<app-product-card
+*ngFor="let p of products"
+[name]="p.name"
+[price]="p.price"
+(added)="onAdded($event)"
+
+>
+<img src="./assets/laptop-with-white-screen-isolated-white-wall.jpg" width="100%">
+</app-product-card>
+</div>
