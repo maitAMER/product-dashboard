@@ -12,7 +12,7 @@ price: number;
 @Component({
 selector: 'app-products',
 standalone: true,
-imports: [CommonModule, RouterLink, ProductCardComponent],
+imports: [CommonModule, RouterLink],
 templateUrl: './products.component.html',
 styleUrls: ['./products.component.css']
 })
